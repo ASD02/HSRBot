@@ -43,3 +43,14 @@ Invite the bot with the `bot` and `applications.commands` scopes. Set `DEV_GUILD
 - **Codes and news feeds** are optional: set `CODES_URL` (JSON list) and `NEWS_RSS_URL`, or use `/addcode`.
 - **HoYoLAB cookies** are encrypted at rest with `FERNET_KEY`, features are opt-in, and `/hoyolab unlink` deletes them immediately. Automated daily check-in may violate HoYoverse's terms; read them before enabling it.
 - Never paste a warp link or cookies anywhere public. The bot only accepts them through ephemeral slash commands.
+
+## Hosting
+
+1. **Create the bot.** In the [Discord Developer Portal](https://discord.com/developers/applications): New Application, then Bot, then Reset Token. Put the token in `.env` as `DISCORD_TOKEN`. Keep it secret; no privileged intents are needed.
+2. **Invite it.** Open this URL with your Application ID (General Information page) in place of `APP_ID`:
+   `https://discord.com/oauth2/authorize?client_id=APP_ID&scope=bot+applications.commands&permissions=268454912`
+   (View Channels, Send Messages, Embed Links, Manage Roles for `/leaks`).
+3. **Run it 24/7** on any machine with Docker: `docker compose up -d --build`. The database lives in the `hsrbot-data` volume. Without Docker, run `python -m hsrbot` under systemd, pm2, or a Windows service.
+4. **First-time server setup:** an admin runs `/setup channel`, `/setup role` and `/setup region` for reminders, codes, news and leaks.
+
+Global slash commands can take up to an hour to appear the first time; set `DEV_GUILD_ID` for instant commands in one server.

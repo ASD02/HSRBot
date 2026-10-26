@@ -1,0 +1,9 @@
+services:
+  hsrbot:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - hsrbot-data:/storage
+volumes:
+  hsrbot-data:

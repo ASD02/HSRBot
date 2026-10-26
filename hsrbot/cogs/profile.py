@@ -112,7 +112,13 @@ class ProfileCog(commands.Cog):
         rows = await self.bot.db.fetchall(
             "SELECT s.* FROM snapshots s JOIN (SELECT user_id, MAX(taken_at) m FROM snapshots GROUP BY user_id) x "
             "ON s.user_id=x.user_id AND s.taken_at=x.m")
-        mine = [dict(r) for r in rows if i.guild.get_member(r["user_id"])]
+        mine = []
+        for r in rows[:200]:  # fetch, not cache: the Members intent is privileged and off
+            try:
+                await i.guild.fetch_member(r["user_id"])
+            except discord.NotFound:
+                continue
+            mine.append(dict(r))
         top = rank_rows(mine, stat)
         if not top:
             return await i.response.send_message("No data yet. Link a UID and run /profile.", ephemeral=True)

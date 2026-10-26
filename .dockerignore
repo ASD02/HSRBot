@@ -1,0 +1,8 @@
+.venv
+.git
+.env
+*.db
+tests
+docs
+__pycache__
+data/cache
