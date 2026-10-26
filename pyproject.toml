@@ -1,0 +1,9 @@
+[project]
+name = "hsrbot"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["discord.py>=2.4", "aiosqlite", "aiohttp", "python-dotenv", "cryptography", "genshin"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

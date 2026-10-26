@@ -1,0 +1,8 @@
+discord.py>=2.4
+aiosqlite
+aiohttp
+python-dotenv
+cryptography
+genshin
+pytest
+pytest-asyncio

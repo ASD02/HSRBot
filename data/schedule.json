@@ -1,0 +1,15 @@
+{
+  "_note": "ESTIMATED dates. Edit as HoYoverse confirms them. 4.7 is expected ~Nov 9-11 2026 (unconfirmed). Mode order/anchors are taken from the 4.4 reset dates (Jul 15, Jul 20, Aug 3, Aug 17) and the mode-to-date mapping is unverified.",
+  "estimated": true,
+  "patch_days": 42,
+  "patches": [
+    {"version": "4.7", "start": "2026-11-11"},
+    {"version": "4.8", "start": "2026-12-23"}
+  ],
+  "modes": [
+    {"name": "Memory of Chaos", "anchor": "2026-07-15", "period_days": 42},
+    {"name": "Pure Fiction", "anchor": "2026-07-20", "period_days": 42},
+    {"name": "Apocalyptic Shadow", "anchor": "2026-08-03", "period_days": 42},
+    {"name": "Anomaly Arbitration", "anchor": "2026-08-17", "period_days": 42}
+  ]
+}
