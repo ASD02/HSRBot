@@ -94,3 +94,13 @@ def simulate_pull(banner: Banner, pity: int, guaranteed: bool, rng: random.Rando
         return False, False, pity + 1, guaranteed
     featured = guaranteed or rng.random() < banner.featured_rate
     return True, featured, 0, not featured
+
+
+def pity_cdf(banner: Banner, n: int) -> float:
+    """P(the first 5-star arrives within n pulls from pity 0); n past hard pity is clamped."""
+    if not isinstance(n, int) or n < 1:
+        raise ValueError("n must be an integer of at least 1")
+    miss = 1.0
+    for k in range(min(n, banner.hard)):
+        miss *= 1 - rate(banner, k)
+    return 1 - miss

@@ -7,7 +7,8 @@ from pathlib import Path
 log = logging.getLogger("hsrbot.data")
 
 BASE = "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/index_min/en/"
-FILES = {"characters": "characters.json", "light_cones": "light_cones.json"}
+FILES = {"characters": "characters.json", "light_cones": "light_cones.json",
+         "relic_sub_affixes": "relic_sub_affixes.json"}
 MAX_AGE = 7 * 24 * 3600
 
 
@@ -16,6 +17,7 @@ class GameData:
         self.cache_dir = Path(data_dir) / "cache"
         self.characters: dict[str, dict] = {}
         self.light_cones: dict[str, dict] = {}
+        self.relic_sub_affixes: dict[str, dict] = {}
 
     @classmethod
     def from_dicts(cls, characters: dict, light_cones: dict) -> "GameData":
